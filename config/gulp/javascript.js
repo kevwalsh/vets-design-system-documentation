@@ -25,9 +25,12 @@ gulp.task('copy-formation-js', function (done) {
   var stream = gulp.src('./node_modules/@department-of-veterans-affairs/formation/dist/formation.js')
     .pipe(rename({dirname: ''}))
     .pipe(gulp.dest('src/vendor/javascripts'));
+  var stream = gulp.src('./node_modules/@department-of-veterans-affairs/formation/dist/formationCSS.js')
+    .pipe(rename({dirname: ''}))
+    .pipe(gulp.dest('src/vendor/javascripts'));
 
   return stream;
 });
 
 
-gulp.task('javascript', gulp.series('copy-uswds-js', 'copy-react-js'));
+gulp.task('javascript', gulp.series('copy-react-js', 'copy-formation-js'));
